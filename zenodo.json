@@ -1,0 +1,27 @@
+{
+  "title": "A scaling limit for the weighted mean square of the truncated M\u00f6bius divisor sum \u2014 Lean 4/Mathlib formalization",
+  "version": "1.0.1",
+  "upload_type": "software",
+  "description": "Lean 4 / Mathlib formalization companion to the manuscript \"A scaling limit for the weighted mean square of the truncated M\u00f6bius divisor sum\" (Rodrigo Menezes and Bernardo C Menezes, 2026). The development proves Theorem 1 of the paper end-to-end: the exact positive decomposition S(n) = (1/\u03b6(2))\u00b7\u2211_{d>n} \u03bc(d)\u00b2/J\u2082(d) + \u03b6(2)\u00b7\u2211_{d\u2264n} J\u2082(d)\u00b7E_d(n)\u00b2 and the explicit bound 0 \u2264 S(n) < (1 + 4\u03b6(2))/n, for every integer n \u2265 1, with no sorry placeholders anywhere in the proved surface. Theorems 2 and 3 are stated but not yet proved: eleven declarations carry sorry, comprising the two de la Bret\u00e8che\u2013Dress\u2013Tenenbaum (2020) inputs (the uniform mean-square theorem and the global bound, neither currently in Mathlib), the fixed-block limit, the closed-form rearrangement and lower bound for the scaling constant C, Ramar\u00e9's identity, and the downstream deductions of Theorems 2 and 3 from these. The Dress\u2013Iwaniec\u2013Tenenbaum constant enters only as an opaque constant in three stubbed declarations and nowhere in the proved Theorem 1 surface. Toolchain: Lean 4.34.0 with mathlib v4.34.0, pinned in lean-toolchain and lake-manifest.json; continuous integration re-verifies the development on every push.",
+  "creators": [
+    {
+      "name": "Menezes, Bernardo C",
+      "affiliation": "Independent researcher"
+    },
+    {
+      "name": "Menezes, Rodrigo",
+      "affiliation": "Independent researcher"
+    }
+  ],
+  "keywords": [
+    "Lean 4",
+    "Mathlib",
+    "formal verification",
+    "M\u00f6bius function",
+    "analytic number theory",
+    "theorem proving"
+  ],
+  "license": {
+    "id": "Apache-2.0"
+  }
+}

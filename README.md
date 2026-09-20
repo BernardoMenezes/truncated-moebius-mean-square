@@ -61,6 +61,11 @@ all kept separate from the proof of Theorem 1:
 Consistent with the manuscript, the file does not assert the convergence
 `D_J → 𝔏`: in the paper that convergence is numerical evidence only.
 
+The Dress–Iwaniec–Tenenbaum constant `𝔏` enters the development only as an
+`opaque` constant (an uninterpreted real parameter) in three of the stubbed
+declarations: `bdt_uniform_mean_square`, `block_tail_law`, and
+`block_constant_tail`. It appears nowhere in the proved Theorem 1 surface.
+
 ## Repository layout
 
 - `TruncatedMoebiusMeanSquare.lean` — the entire development (~1900 lines),
