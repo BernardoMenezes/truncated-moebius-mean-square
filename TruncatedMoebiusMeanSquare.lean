@@ -11,8 +11,12 @@ This file proves **Theorem 1** end-to-end: the exact positive decomposition
 `S(n) = ζ(2)⁻¹ ∑_{d>n} μ(d)²/J₂(d) + ζ(2) ∑_{d≤n} J₂(d) E_d(n)²` and the bound
 `0 ≤ S(n) < (1 + 4ζ(2))/n`, including all supporting definitions and elementary
 lemmas (Gram identity, Euler products for ζ(2)⁻¹ and μ²/J₂, tail bounds).
-Theorems 2 and 3 remain `sorry`-ed statements: they depend on the
-de la Bretèche–Dress–Tenenbaum (2020) inputs that are not in Mathlib.
+Theorems 2 and 3 remain `sorry`-ed statements: eleven declarations, comprising
+the two de la Bretèche–Dress–Tenenbaum (2020) inputs (not in Mathlib), the
+fixed-block limit (elementary squarefree sieve, not a named Mathlib result),
+the closed-form rearrangement and lower bound for `C`, Ramaré's identity, and
+the downstream deductions of Theorems 2 and 3 from these. Consistent with the
+manuscript, the convergence `D_J → 𝔏` is not asserted (numerical evidence only).
 
 ### What comes from Mathlib vs what is custom
 
@@ -1868,11 +1872,6 @@ theorem block_constant_tail :
       ∀ J : ℕ, 1 ≤ J →
         |(∑' j : ℕ, if J ≤ j then D j / (j * (j + 1) : ℝ) else 0)
           - DITconst / J| ≤ K / (J * calL (3 * J) ^ c) := by
-  sorry
-
-/-- Consequence recorded in the paper's remark: `D_J → 𝔏` as `J → ∞`. -/
-theorem D_tendsto_DIT :
-    Tendsto D atTop (𝓝 DITconst) := by
   sorry
 
 /-! ## Ramaré's master identity (Remark) — the equivalent reformulation -/

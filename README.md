@@ -27,15 +27,39 @@ The formal statements carry the hypothesis `1 ≤ n` explicitly: the
 decomposition is false at `n = 0` (there `M(q,0) = 0`), matching the paper's
 standing convention `n ≥ 1`.
 
-**Theorems 2 and 3 (statements only).** The scaling limit `n·S(n) → C` and
-the quantitative block-tail law are stated in the same file but not yet
-proved: they depend on the uniform mean-square theorem of
-de la Bretèche–Dress–Tenenbaum (2020), which is not currently in Mathlib.
-That input and the defining properties of the Dress–Iwaniec–Tenenbaum
-constant are recorded as explicitly marked hypotheses — twelve `sorry`-ed
-declarations, kept separate from the proof of Theorem 1. Completing the
-formalization of Theorems 2 and 3 reduces to formalizing this single
-analytic input.
+**Theorems 2 and 3 (statements only).** Eleven declarations carry `sorry`,
+all kept separate from the proof of Theorem 1:
+
+*External analytic inputs (not in Mathlib):*
+
+- `bdt_uniform_mean_square` — de la Bretèche–Dress–Tenenbaum (2020),
+  Thm. 1.1: `S(x,z) = 𝔏·x + O(x / ℒ(3ξ)^c)`, uniform for `ξ ≤ z ≤ x/ξ`.
+- `bdt_global` — BDT (2020), eq. (1.5): the global bound `S(x,z) ≪ x`.
+
+*Elementary, but not yet available as named Mathlib results:*
+
+- `block_limit` — the fixed-block limit (paper eq. 17); its input is the
+  squarefree-sieve mean of `μ(Am)μ(Bm)` (paper eq. 16), elementary but not
+  currently a named Mathlib result.
+- `ramare_parseval` — Ramaré's identity `1 + S(n) = ζ(2)·S₁(n)` at `σ = 3/2`
+  (finite-sum rearrangement of an absolutely convergent series).
+- `Cconst_eq_closed` — the closed double-series form of `C` (rearrangement
+  justified by absolute convergence).
+- `Cconst_lower_bound` — `C ≥ 1/(2ζ(2))` from `D_j ≥ 0` and `D₁ = 1/ζ(2)`.
+
+*Downstream consequences of the above:*
+
+- `scaling_limit` — Theorem 2 (`n·S(n) → C`), from `block_limit` and
+  `bdt_global`.
+- `block_tail_law` — Theorem 3, a Stieltjes/partial-summation corollary of
+  `bdt_uniform_mean_square`.
+- `block_constant_tail` — the limiting block-constant tail (paper eq. 15),
+  from `block_tail_law` and `block_limit`.
+- `S1_tail` and `S1_tail_tendsto` — Theorem 2 restated through Ramaré's
+  identity.
+
+Consistent with the manuscript, the file does not assert the convergence
+`D_J → 𝔏`: in the paper that convergence is numerical evidence only.
 
 ## Repository layout
 
@@ -57,7 +81,7 @@ lake build           # verifies TruncatedMoebiusMeanSquare.lean
 ```
 
 A successful `lake build` finishes with no errors. Warnings of the form
-`declaration uses 'sorry'` appear only for the twelve explicitly stubbed
+`declaration uses 'sorry'` appear only for the eleven explicitly stubbed
 Theorem 2/3 declarations described above; the proof of Theorem 1 uses no
 `sorry`.
 
