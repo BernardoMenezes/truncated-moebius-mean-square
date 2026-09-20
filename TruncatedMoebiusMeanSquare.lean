@@ -2,7 +2,8 @@
 # A scaling limit for the weighted mean square of the truncated Möbius divisor sum
 ## Lean 4 / Mathlib formalization exploration (first pass)
 
-Companion to the manuscript (R. Menezes, Sep 19 2026):
+Companion to the manuscript (Rodrigo Menezes and Bernardo C Menezes,
+  Independent researchers, Sep 19 2026):
 
   M(q,n) := ∑_{d ∣ q, d ≤ n} μ(d),        S(n) := ∑_{q > n} M(q,n)² / q².
 
