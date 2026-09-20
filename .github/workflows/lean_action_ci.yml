@@ -1,0 +1,25 @@
+# Continuous integration for the Lean 4 / Mathlib formalization.
+# Uses the standard leanprover/lean-action: installs the pinned toolchain
+# from lean-toolchain, downloads precompiled Mathlib artifacts
+# (lake exe cache get) for the exact dependency revisions pinned in
+# lake-manifest.json, then runs lake build. Every push and pull request
+# therefore re-verifies TruncatedMoebiusMeanSquare.lean at that revision.
+name: Lean Action CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          # Run `lake exe cache get` (Mathlib artifact cache) before building.
+          use-mathlib-cache: true
+          # Run `lake build`; the workflow fails if the build fails.
+          build: true
